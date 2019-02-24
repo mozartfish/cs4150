@@ -49,7 +49,6 @@ public class RumorMill {
             {
                 int key = entry.getValue();
                 String value = entry.getKey();
-                orderedMap.get(key);
                 orderedMap.get(key).add(value);
             }
             for (Integer key: orderedMap.keySet())
