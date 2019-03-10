@@ -131,6 +131,8 @@ public class GetShorty {
                         double finalCost = cost.get(vertex) * c.getf();
                         cost.put(vertexVal, finalCost);
                         vertex v = new vertex(vertexVal, finalCost);
+                        //visited.add(vertex);
+                        //previous.put(vertex, u);
                         PQ.add(v);
                     }
                 }

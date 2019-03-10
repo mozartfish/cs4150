@@ -2,12 +2,11 @@ package cs4150;
 
 import java.util.*;
 
-
 public class RumorMill {
     public static void main(String[] args) {
-        HashMap<String, Integer> distance = new HashMap<String, Integer>(); // store the distance associated with every vertex
-        HashMap<String, ArrayList<String>> graph = new HashMap<String, ArrayList<String>>(); // representation of the graph
-        TreeMap<Integer, TreeSet<String>> orderedMap = new TreeMap<Integer, TreeSet<String>>();// a graph with all the vertices and distances in sorted order
+        HashMap<String, Integer> distance = new HashMap<String, Integer>();
+        HashMap<String, ArrayList<String>> graph = new HashMap<String, ArrayList<String>>();
+        TreeMap<Integer, TreeSet<String>> orderedMap = new TreeMap<Integer, TreeSet<String>>();
 
         Scanner scn = new Scanner(System.in); // create a new scanner
 
@@ -34,8 +33,7 @@ public class RumorMill {
             graph.put(friend, friends_friend);
         }
 
-        int r = scn.nextInt(); // the number of rumors
-
+        int r = scn.nextInt();
         for (int k = 0; k < r; k++)
         {
             String name = scn.next();
@@ -49,6 +47,7 @@ public class RumorMill {
             {
                 int key = entry.getValue();
                 String value = entry.getKey();
+                orderedMap.get(key);
                 orderedMap.get(key).add(value);
             }
             for (Integer key: orderedMap.keySet())
@@ -66,33 +65,32 @@ public class RumorMill {
 
     public static void bfs(HashMap<String, ArrayList<String>> graph, String start, HashMap<String, Integer> distance)
     {
-       for (String vertex: graph.keySet()) {
-           distance.put(vertex, Integer.MAX_VALUE);
-       }
-       int dist = distance.get(start);
-       dist = 0;
-       distance.put(start,dist);
+        for (String vertex: graph.keySet()) {
+            distance.put(vertex, Integer.MAX_VALUE);
+        }
+        int dist = distance.get(start);
+        dist = 0;
+        distance.put(start,dist);
 
-       LinkedList<String> queue = new LinkedList<String>();
+        LinkedList<String> queue = new LinkedList<String>();
 
-       queue.add(start);
+        queue.add(start);
 
-       while (!queue.isEmpty())
-       {
-           String u = queue.poll();
-           ArrayList<String> edges = graph.get(u);
-           for (String vertex: edges)
-           {
-               if (distance.get(vertex) == Integer.MAX_VALUE)
-               {
-                   queue.add(vertex);
-                   int distanceVertex = distance.get(vertex);
-                   distanceVertex = distance.get(u) + 1;
-                   distance.put(vertex, distanceVertex);
-               }
-           }
-       }
+        while (!queue.isEmpty())
+        {
+            String u = queue.poll();
+            ArrayList<String> edges = graph.get(u);
+            for (String vertex: edges)
+            {
+                if (distance.get(vertex) == Integer.MAX_VALUE)
+                {
+                    queue.add(vertex);
+                    int distanceVertex = distance.get(vertex);
+                    distanceVertex = distance.get(u) + 1;
+                    distance.put(vertex, distanceVertex);
+                }
+            }
+        }
     }
 }
-
 

@@ -1,6 +1,6 @@
 package cs4150;
 
-import java.util.Scanner;
+import java.util.*;
 
 class Star {
     long xCoordinate;
